@@ -20,7 +20,7 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="logo">
-							<span class="icon fa-home"></span>
+							<span class="icon fa-gem"></span>
 						</div>
 						<div class="content">
 							<div class="inner">
@@ -46,7 +46,7 @@
 						<!-- Intro -->
 							<article id="presentation">
 								<h2 class="major">Project</h2>
-								<span class="image main"><img src="../images/pic01.jpg" alt="" /></span>
+								<span class="image main"><img src="static/img/paris.jpg" alt="" /></span>
 								<p>In order to provide ever so slight guidance in buying property, this project started as an attempt to benchmark property prices using reliable data instead of relying on third parties. It has since been adapted as a demonstration of a full-stack data science application.</p>
 								<p>The data consists of two types: property prices and renting prices. The former contains property prices ("valeurs foncières") and property characteristics, such as area, number of rooms, and location, recorded and published by the French government between 2016 and 2020. These files are manually downloaded and consolidated in jupyter. Data on rent prices comes from an automated web scrapper which is routed through a Tor proxy to avoid IP blocking.</p>
 								<p>Property prices limited to the 75th department are then cleaned (data imputation and normalizing) and used to train two algorithms: a multilinear regression and a neural network. New characteristics can then be inputted into the model to provide a benchmark for property prices.</p>
@@ -57,10 +57,10 @@
 							<article id="exploration">
 								<h2 class="major">Explore</h2>
 								<h3 class="major">Pricing data</h3>
-								<span class="image main"><img src="../images/pic02.jpg" alt="" /></span>
+								<span class="image main"><img src="static/img/property.jpeg" alt="" /></span>
 								<p>The pricing data contains the precise addresses of the properties involved which enables accurate pricing by surface area and by street. </p>
 								<h3 class="major">Renting data</h3>
-								<span class="image main"><img src="../images/pic02.jpg" alt="" /></span>
+								<span class="image main"><img src="static/img/renting.jpg" alt="" /></span>
 								<p>The renting data comes from a website whose information is less accurate. Data exploration in this case is limited to Parisian district, instead of up to street details.</p>
 
 							</article>
@@ -70,7 +70,7 @@
 								<h2 class="major">Price</h2>
 
 								<h3 class="major">Multilinear regression</h3>
-								<span class="image main"><img src="../images/pic02.jpg" alt="" /></span>
+								<span class="image main"><img src="static/img/MLR.jpg" alt="" /></span>
 								<p>As simple as machine learning algorithms go, multilinear regression still provides a good basis to evaluate how well more sophisticated models should perform. </p>
 
 								<form method="post" action="#">
@@ -85,7 +85,7 @@
 										</div>
 										<div class="field half">
 											<label for="neighborhood">Neighborhood</label>
-											<input name="message" name="neighborhood" id="neighborhood"/>
+											<input type="text" name="neighborhood" id="neighborhood"/>
 										</div>
 									</div>
 									<ul class="actions">
@@ -95,7 +95,7 @@
 								</form>
 
 								<h3 class="major">Deep learning</h3>
-								<span class="image main"><img src="../images/pic02.jpg" alt="" /></span>
+								<span class="image main"><img src="static/img/dnn.jpeg" alt="" /></span>
 								<p>While definitely not a silver bullet, it is interesting to see how well deep learning architectures perform on different data. The current architecture has been shown to be conducive to results in regression cases. </p>
 
 								<form method="post" action="#">
@@ -110,7 +110,7 @@
 										</div>
 										<div class="field half">
 											<label for="neighborhood">Neighborhood</label>
-											<input name="message" name="neighborhood" id="neighborhood"/>
+											<input type="text" name="neighborhood" id="neighborhood"/>
 										</div>
 									</div>
 									<ul class="actions">
@@ -123,27 +123,59 @@
 						<!-- Contact -->
 							<article id="rent">
 								<h2 class="major">Rent</h2>
+								<p>Based on the previously presented renting data in different Paris district, we can project potential rent on a monthly basis.</p>
+
+
 								<form method="post" action="#">
 									<div class="fields">
 										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
+											<label for="area">Area</label>
+											<input type="text" name="area" id="area" />
 										</div>
 										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
+											<label for="rooms">Rooms</label>
+											<input type="text" name="rooms" id="rooms" />
 										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
+										<div class="field half">
+											<label for="neighborhood">Neighborhood</label>
+											<input type="text" name="neighborhood" id="neighborhood"/>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="submit" value="Estimate" class="primary" /></li>
 										<li><input type="reset" value="Reset" /></li>
 									</ul>
 								</form>
+								<section>
+									<h3 class="major">Table</h3>
+									<h4>Default</h4>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Month</th>
+													<th>Expected rent</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>29.99</td>
+												</tr>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="1"></td>
+													<td>100.0</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
 							</article>
+
+
+
 
 						<!-- Elements -->
 							<article id="elements">
