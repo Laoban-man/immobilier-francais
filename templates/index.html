@@ -26,7 +26,7 @@
 						<div class="content">
 							<div class="inner">
 								<h1>Parisian Real Estate</h1>
-								<p>A case study of Parision real estate and property renting market  by <a href="https://laoban-man.github.io/">Nicolas Roux </a> <br />
+								<p>A case study of the Parisian real estate and property renting markets  by <a href="https://laoban-man.github.io/">Nicolas Roux </a> <br />
 								</p>
 							</div>
 						</div>
@@ -87,7 +87,7 @@
 								<span class="image main"><img src="static/img/MLR.jpg" alt="" /></span>
 								<p>As simple as machine learning algorithms go, multilinear regression still provides a good basis to evaluate how well more sophisticated models should perform. </p>
 
-								<form method="post" action="#">
+								<form method="post" action=""{{ url_for('models') }}" ">
 									<div class="fields">
 										<div class="field half">
 											<label for="area">Area</label>
@@ -98,40 +98,65 @@
 											<input type="text" name="rooms" id="rooms" />
 										</div>
 										<div class="field half">
-											<label for="neighborhood">Neighborhood</label>
-											<input type="text" name="neighborhood" id="neighborhood"/>
+											<label for="lots">Lots #</label>
+											<input type="text" name="lots" id="lots"/>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Estimate" class="primary" /></li>
+										<li><input type="submit" name="lr_button" value="Estimate LR" class="primary" /></li>
 										<li><input type="reset" value="Reset" /></li>
 									</ul>
 								</form>
+								<section>
+									<div class="table-wrapper">
+										<table>
+											<tbody>
+												<tr>
+													<td>Expected price</td>
+													<td>{{prediction}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</section>
 
 								<h3 class="major">Deep learning</h3>
 								<span class="image main"><img src="static/img/dnn.jpeg" alt="" /></span>
 								<p>While definitely not a silver bullet, it is interesting to see how well deep learning architectures perform on different data. The current architecture has been shown to be conducive to results in regression cases. </p>
 
-								<form method="post" action="#">
+								<form method="post" action=""{{ url_for('models') }}" ">
 									<div class="fields">
 										<div class="field half">
-											<label for="area">Area</label>
-											<input type="text" name="area" id="area" />
+											<label for="area2">Area</label>
+											<input type="text" name="area2" id="area2" />
 										</div>
 										<div class="field half">
-											<label for="rooms">Rooms</label>
-											<input type="text" name="rooms" id="rooms" />
+											<label for="rooms2">Rooms</label>
+											<input type="text" name="rooms2" id="rooms2" />
 										</div>
 										<div class="field half">
-											<label for="neighborhood">Neighborhood</label>
-											<input type="text" name="neighborhood" id="neighborhood"/>
+											<label for="lots2">Lots #</label>
+											<input type="text" name="lots2" id="lots2"/>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Estimate" class="primary" /></li>
+										<li><input type="submit" name="nn_button" value="Estimate NN" class="primary" /></li>
 										<li><input type="reset" value="Reset" /></li>
 									</ul>
 								</form>
+								<section>
+									<div class="table-wrapper">
+										<table>
+											<tbody>
+												<tr>
+													<td>Expected price</td>
+													<td>{{prediction2}}</td>
+												</tr>
+
+											</tbody>
+										</table>
+									</div>
+								</section>
 							</article>
 
 						<!-- Contact -->
@@ -140,52 +165,40 @@
 								<p>Based on the previously presented renting data in different Paris district, we can project potential rent on a monthly basis.</p>
 
 
-								<form method="post" action="#">
+								<form method="post" action=""{{ url_for('models') }}" ">
 									<div class="fields">
 										<div class="field half">
-											<label for="area">Area</label>
-											<input type="text" name="area" id="area" />
+											<label for="area3">Area</label>
+											<input type="text" name="area3" id="area3" />
 										</div>
 										<div class="field half">
-											<label for="rooms">Rooms</label>
-											<input type="text" name="rooms" id="rooms" />
+											<label for="rooms3">Rooms</label>
+											<input type="text" name="rooms3" id="rooms3" />
 										</div>
 										<div class="field half">
-											<label for="neighborhood">Neighborhood</label>
-											<input type="text" name="neighborhood" id="neighborhood"/>
+											<label for="district3">District</label>
+											<input type="text" name="district3" id="district3"/>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Estimate" class="primary" /></li>
+										<li><input type="submit" name = "rent_button" value="Estimate" class="primary" /></li>
 										<li><input type="reset" value="Reset" /></li>
 									</ul>
 								</form>
 								<section>
-									<h3 class="major">Table</h3>
-									<h4>Default</h4>
+									<h3 class="major">Revenue potential</h3>
 									<div class="table-wrapper">
 										<table>
-											<thead>
-												<tr>
-													<th>Month</th>
-													<th>Expected rent</th>
-												</tr>
-											</thead>
 											<tbody>
 												<tr>
-													<td>Item One</td>
-													<td>29.99</td>
-												</tr>
+													<td>Ten-year-revenue</td>
+													<td>{{ten_year_revenue}}</td>
 												</tr>
 											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="1"></td>
-													<td>100.0</td>
-												</tr>
-											</tfoot>
+
 										</table>
 									</div>
+								</section>
 							</article>
 
 
