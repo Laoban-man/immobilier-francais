@@ -7,12 +7,12 @@ import time
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras import regularizers
-from tensorflow.keras.callbacks import ModelCheckpoint
-import keras
+#import tensorflow as tf
+#from tensorflow.keras.models import Sequential
+#from tensorflow.keras.layers import Dense, Dropout
+#from tensorflow.keras import regularizers
+#from tensorflow.keras.callbacks import ModelCheckpoint
+#import keras
 
 app = Flask(__name__)
 
@@ -36,13 +36,13 @@ def models():
             nb_lots = int(request.form['lots'])
             prediction=lr.predict(np.array([nb_lots,area,rooms]).reshape(1,3))
             return render_template('index.html',prediction=prediction)
-        elif request.form.get("nn_button"):
-            my_model = tf.keras.models.load_model('my_model')
-            rooms = int(request.form['rooms2'])
-            area = int(request.form['area2'])
-            nb_lots = int(request.form['lots2'])
-            prediction=my_model.predict(np.array([nb_lots,area,rooms]).reshape(1,3))
-            return render_template('index.html',prediction2=prediction)
+        #elif request.form.get("nn_button"):
+        #    my_model = tf.keras.models.load_model('my_model')
+        #    rooms = int(request.form['rooms2'])
+        #    area = int(request.form['area2'])
+        #    nb_lots = int(request.form['lots2'])
+        #    prediction=my_model.predict(np.array([nb_lots,area,rooms]).reshape(1,3))
+        #    return render_template('index.html',prediction2=prediction)
         elif request.form.get("rent_button"):
             with open("rent_model.pkl","rb") as f:
                     lr=pickle.load(f)
@@ -54,6 +54,9 @@ def models():
             return render_template('index.html',ten_year_revenue=ten_year_revenue)
 
 
+@app.errorhandler(500)
+def internal_server_error(e):
+    return jsonify(error=str(e)), 500
 
 
 if __name__ == '__main__':
