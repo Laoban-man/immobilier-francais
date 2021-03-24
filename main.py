@@ -16,10 +16,6 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/index.html', methods=['GET'])
-def main_index():
-    return render_template('index.html')
-
 @app.route('/single-post.html', methods=['GET'])
 def single_post():
     return render_template('single-post.html')

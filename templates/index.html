@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../static/css/main.css" />
 		<noscript><link rel="stylesheet" href="../static/css/noscript.css" /></noscript>
+
 	</head>
 	<body class="is-preload">
 
@@ -48,8 +49,12 @@
 								<h2 class="major">Project</h2>
 								<span class="image main"><img src="static/img/paris.jpg" alt="" /></span>
 								<p>In order to provide ever so slight guidance in buying property, this project started as an attempt to benchmark property prices using reliable data instead of relying on third parties. It has since been adapted as a demonstration of a full-stack data science application.</p>
-								<p>The data consists of two types: property prices and renting prices. The former contains property prices ("valeurs foncières") and property characteristics, such as area, number of rooms, and location, recorded and published by the French government between 2016 and 2020. These files are manually downloaded and consolidated in jupyter. Data on rent prices comes from an automated web scrapper which is routed through a Tor proxy to avoid IP blocking.</p>
-								<p>Property prices limited to the 75th department are then cleaned (data imputation and normalizing) and used to train two algorithms: a multilinear regression and a neural network. New characteristics can then be inputted into the model to provide a benchmark for property prices.</p>
+								<p>The data consists of two types: property prices and renting prices.
+									<h3 class="major">Valeurs foncières</h3>
+									<span class="image main"><img src="static/img/dvf_crop.jpg" alt="" /></span> The former contains property prices ("valeurs foncières") and property characteristics, such as area, number of rooms, and location, recorded and published by the French government between 2015 and 2019. These files are manually downloaded and consolidated in jupyter.</p>
+								<p>
+									<h3 class="major">Renting data</h3>
+									<span class="image main"><img src="static/img/rent_crop.jpg" alt="" /></span> Data on rent prices comes from an automated web scrapper which is routed through a Tor proxy to avoid IP blocking. Rented property are limited to the 75th department and then cleaned (data imputation and normalizing) and used to train two algorithms: a multilinear regression and a neural network. New characteristics can then be inputted into the model to provide a benchmark for property prices.</p>
 								<p>In light of the possibility acquisitions as investments, a final field of investigation is to determine return on investment potential based on online observations.</p>
 							</article>
 
@@ -59,9 +64,18 @@
 								<h3 class="major">Pricing data</h3>
 								<span class="image main"><img src="static/img/property.jpeg" alt="" /></span>
 								<p>The pricing data contains the precise addresses of the properties involved which enables accurate pricing by surface area and by street. </p>
+								<span class="image main"><img src="static/img/parisstreetprices.png" alt="" /></span>
+								<p> As can be expected, this map shows the highest street-based average price in central/West Paris with the highest cost per m2 on main roads such as Rivoli or the Champs Elysees, whereas Eastern Paris is more affordable.</p>
+								<span class="image main"><img src="static/img/surfacexprix.png" alt="" /></span>
+								<p> At a higher level, this is confirmed when looking at district average prices, with prices progressively increasing as we move left on this graph. Outliers on small surfaces are due to a mix of database inconsistencies and Parisian market idiosyncracies.</p>
+								<span class="image main"><img src="static/img/evolutionprix.png" alt="" /></span>
+								<p> While globally increasing since 2016, average prices in other districts seem to have benefitted from a drop in prices in the 16th and 6th.
+
 								<h3 class="major">Renting data</h3>
 								<span class="image main"><img src="static/img/renting.jpg" alt="" /></span>
 								<p>The renting data comes from a website whose information is less accurate. Data exploration in this case is limited to Parisian district, instead of up to street details.</p>
+								<span class="image main"><img src="static/img/surfacexrent.png" alt="" /></span>
+								<p> The limited size of the sampled renting prices prevents exhaustive statistics of all Parisian districts but it does confirm that smaller apartments cost more by surface area while economies of scale are obvious on larger properties. As an investment, smaller surfaces appear to have higher ROI potential.</p>
 
 							</article>
 
@@ -435,6 +449,15 @@
 			<script src="../static/js/breakpoints.min.js"></script>
 			<script src="../static/js/util.js"></script>
 			<script src="../static/js/main.js"></script>
+			<script>
+				$(function () {
+				  var includes = $('[data-include]')
+				  $.each(includes, function () {
+				    var file = $(this).data('include')
+				    $(this).load(file)
+				  })
+				})
+			</script>
 
 	</body>
 </html>
